@@ -25,6 +25,12 @@ gem 'jquery-rails'
 # Add simple form
 gem 'simple_form'
 
+# Add User Authentication devise
+gem 'devise'
+
+# Add Face Authentication via omniauth
+gem 'omniauth-facebook'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
