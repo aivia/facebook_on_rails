@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   	find_by_auth_hash(auth_hash) || create_from_auth_hash(auth_hash)
   end
 
-  def self.find_auth_hash(auth_hash)
+  def self.find_by_auth_hash(auth_hash)
   	where(
   		provider: auth_hash.provider,
   		uid: auth_hash.uid
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   	super && provider.blank?
   end
 
-  def updae_with_password(params, *options)
+  def update_with_password(params, *options)
   	if encrypted_password.blank?
   		update_attributes(params, *options)
   	else 
