@@ -4,6 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  attr_accessible :provider, :uid, :email, :name, :oauth_token, :oauth_expires_at
+# Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # attr_accessible :title, :body
+
+  # User can have many posts, 
+  # if user is deleted the related posts are also deleted
+  has_many :posts, dependent: :destroy
+
   def self.find_or_create_from_auth_hash(auth_hash)
   	find_by_auth_hash(auth_hash) || create_from_auth_hash(auth_hash)
   end
@@ -38,7 +47,4 @@ class User < ActiveRecord::Base
   	end
   end
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
 end

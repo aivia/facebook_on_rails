@@ -5,7 +5,7 @@ FacebookOnRails::Application.routes.draw do
 #  devise_for :installs
 
   resources :posts
-
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -31,6 +31,9 @@ gem 'devise'
 # Add Face Authentication via omniauth
 gem 'omniauth-facebook'
 
+# adding flat design
+gem 'flat-ui-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
+  
+
   def index
     @posts = Post.all
 
@@ -24,8 +26,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
-
+    #@post = user.posts.new
+    @post = user.posts.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = user.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -80,4 +82,19 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def user
+    current_user
+  end
+
+  #def set_post
+  #  @post = Post.find(params[:id])
+  #end
+
+  def post_params
+    params.require(:post).permit(:title, :content, :user_id)
+  end
+
 end
